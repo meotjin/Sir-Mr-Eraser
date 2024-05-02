@@ -17,7 +17,7 @@ texture = ExtResource("1_uhomi")
 physics_layer_0/collision_layer = 8
 sources/0 = SubResource("TileSetAtlasSource_tcvqi")
 
-[node name="TestLevel" type="Node2D"]
+[node name="Level" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_81wij")
