@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1cwk4mja0m6i"]
+
+[ext_resource type="Texture2D" uid="uid://dn8muas8fpb0u" path="res://Levels/Test/TestTiles.png" id="1_uhomi"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tcvqi"]
+texture = ExtResource("1_uhomi")
+0:40/0 = 0
+1:40/0 = 0
+2:40/0 = 0
+3:40/0 = 0
+4:40/0 = 0
+5:40/0 = 0
+6:40/0 = 0
+7:40/0 = 0
+8:40/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_81wij"]
+sources/0 = SubResource("TileSetAtlasSource_tcvqi")
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_81wij")
+format = 2
