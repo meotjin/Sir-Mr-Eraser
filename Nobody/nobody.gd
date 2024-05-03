@@ -7,14 +7,21 @@ extends Sprite2D
 
 @onready var tile_map = $"../TileMap"
 @onready var sprite = $Sprite2D
+@onready var timer = $"../BeatIndicator"
 
 # will not let the character move towards destination unless command is given
 var move_command = false; 
+
+var take_input = true
+
+func _ready():
+	timer.everyone_move.connect(command_move)
 
 func _physics_process(delta):
 	# will let new commands to be given once the previous is done
 	if global_position == sprite.global_position:
 		move_command = false
+		take_input = true
 		return
 	# moving
 	if move_command == true:
@@ -26,9 +33,11 @@ func _process(delta):
 
 
 func detect_input():
-	if Input.is_action_just_pressed("move"):
-		move_command = true;
+	if not take_input:
 		return
+	#if Input.is_action_just_pressed("move"):
+		#move_command = true;
+		#return
 
 	var direction: Vector2 = Input.get_vector("left","right","up","down")
 	
@@ -54,3 +63,8 @@ func move(dir: Vector2):
 	
 	global_position = tile_map.map_to_local(target_tile)
 	sprite.global_position = tile_map.map_to_local(current_tile)
+
+
+func command_move():
+	take_input = false
+	move_command = true

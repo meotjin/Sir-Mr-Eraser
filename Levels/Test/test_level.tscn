@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1cwk4mja0m6i"]
+[gd_scene load_steps=6 format=3 uid="uid://b1cwk4mja0m6i"]
 
 [ext_resource type="Texture2D" uid="uid://dn8muas8fpb0u" path="res://Levels/Test/TestTiles.png" id="1_uhomi"]
 [ext_resource type="PackedScene" uid="uid://c0amauo3u6fu2" path="res://Nobody/nobody.tscn" id="2_1unm0"]
+[ext_resource type="PackedScene" uid="uid://pmwki6okd2lh" path="res://Indicator/beat_indicator.tscn" id="3_0pl1y"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tcvqi"]
 texture = ExtResource("1_uhomi")
@@ -30,3 +31,5 @@ layer_0/tile_data = PackedInt32Array(-262150, 0, 40, -196614, 0, 40, -131078, 0,
 
 [node name="Nobody" parent="." instance=ExtResource("2_1unm0")]
 position = Vector2(72, -8)
+
+[node name="BeatIndicator" parent="." instance=ExtResource("3_0pl1y")]
