@@ -4,29 +4,38 @@ extends Sprite2D
 @onready var sprite = $Sprite2D
 
 var is_moving = false
+var move_command = false;
 
 func _physics_process(delta):
 	if is_moving == false:
 		return
 	if global_position == sprite.global_position:
 		is_moving = false
+		move_command = false
 		return
-	
-	sprite.global_position = sprite.global_position.move_toward(global_position,2)
+	if move_command == true:
+		sprite.global_position = sprite.global_position.move_toward(global_position,2)
 
 func _process(delta):
 	detect_input()
 
 
 func detect_input():
-	var direction: Vector2 = Input.get_vector("left","right","up","down")
-	if is_moving == true:
+	if Input.is_action_just_pressed("move"):
+		move_command = true;
 		return
+
+	var direction: Vector2 = Input.get_vector("left","right","up","down")
+	#if is_moving == true:
+		#return
 	
-	move(direction)
+	if direction != Vector2.ZERO:
+		move(direction)
 
 
 func move(dir: Vector2):
+	global_position = sprite.global_position
+	
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
 	var target_tile: Vector2i = Vector2i(
 		current_tile.x + dir.x,
