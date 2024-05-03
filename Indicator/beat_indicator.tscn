@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://pmwki6okd2lh"]
+
+[ext_resource type="Script" path="res://Indicator/beat_indicator.gd" id="1_sav2c"]
+
+[node name="BeatIndicator" type="Node"]
+script = ExtResource("1_sav2c")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
