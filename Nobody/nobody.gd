@@ -39,22 +39,29 @@ func detect_input():
 		#move_command = true;
 		#return
 
-	var direction: Vector2 = Input.get_vector("left","right","up","down")
+	var direction: Vector2 = Vector2.ZERO# Input.get_vector("left","right","up","down")
+	if Input.is_action_just_pressed("down"):
+		direction.y = 1
+	elif Input.is_action_just_pressed("up"):
+		direction.y = -1
+	elif Input.is_action_just_pressed("left"):
+		direction.x = -1
+	elif Input.is_action_just_pressed("right"):
+		direction.x = 1
+	# reseting the position of the cursor
 	
 	if direction != Vector2.ZERO:
+		global_position = sprite.global_position
+		sprite.global_position = global_position
 		move(direction)
 
 
 func move(dir: Vector2):
-	# reseting the position of the cursor
-	global_position = sprite.global_position
-	
 	var current_tile: Vector2i = tile_map.local_to_map(global_position)
 	var target_tile: Vector2i = Vector2i(
 		current_tile.x + dir.x,
 		current_tile.y + dir.y
 	)
-	
 	# i have declared a custom data layer on the Tilemap, setting some tiles 
 	# as walkable tiles. the character may only enter those tiles
 	var tile_data: TileData = tile_map.get_cell_tile_data(0, target_tile)
