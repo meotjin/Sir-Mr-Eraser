@@ -1,7 +1,17 @@
-[gd_scene format=3 uid="uid://vg5eooa503ld"]
+[gd_scene load_steps=5 format=3 uid="uid://vg5eooa503ld"]
 
-[node name="SirMrEraser" type="CharacterBody2D"]
+[ext_resource type="Texture2D" uid="uid://dxx45ylfeb2gd" path="res://Nobody/tilemap_packed.png" id="1_r7f8c"]
+[ext_resource type="Script" path="res://Enemies/SirMrEraser/sir_mr_eraser.gd" id="2_4534v"]
+[ext_resource type="Texture2D" uid="uid://b67vcbiywi2rp" path="res://icon.svg" id="2_y8j51"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0j5yq"]
+atlas = ExtResource("1_r7f8c")
+region = Rect2(16, 80, 16, 16)
+
+[node name="SirMrEraser" type="Sprite2D"]
+texture = SubResource("AtlasTexture_0j5yq")
+script = ExtResource("2_4534v")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_y8j51")
