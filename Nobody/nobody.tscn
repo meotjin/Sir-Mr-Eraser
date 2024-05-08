@@ -8,7 +8,7 @@
 atlas = ExtResource("1_wnlly")
 region = Rect2(0, 80, 16, 16)
 
-[node name="Nobody" type="Sprite2D"]
+[node name="Nobody" type="Sprite2D" groups=["Player"]]
 texture = SubResource("AtlasTexture_n80va")
 script = ExtResource("1_s0iqe")
 

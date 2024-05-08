@@ -5,8 +5,8 @@
 
 extends Sprite2D
 
-@onready var tile_map = $"../TileMap"
-@onready var sprite = $Sprite2D
+@onready var tile_map: TileMap = $"../TileMap"
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var timer = $"../BeatIndicator"
 
 # will not let the character move towards destination unless command is given
