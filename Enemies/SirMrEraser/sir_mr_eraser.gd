@@ -7,6 +7,7 @@ extends Sprite2D
 @onready var tile_map: TileMap = $"../TileMap"
 var direction: Vector2i
 var move_dir: Vector2i
+var is_far: bool = false
 
 
 func _ready():
@@ -27,14 +28,32 @@ func find_move():
 	direction = Vector2i(
 		Player.global_position.x - global_position.x,
 		Player.global_position.y - global_position.y
-	).sign()
-	
+	)
+
 	if direction.x != 0:
-		move_dir = Vector2i(direction.x, 0)
+		move_dir = Vector2i(direction.sign().x, 0)
 	elif direction.y != 0:
-		move_dir = Vector2i(0, direction.y)
+		move_dir = Vector2i(0, direction.sign().y)
 	else:
-		move_dir = Vector2.ZERO
+		move_dir = Vector2i.ZERO
+	
+	var how_far_y = abs(tile_map.local_to_map(Player.global_position).y -\
+	 tile_map.local_to_map(global_position).y)
+	var how_far_x = abs(tile_map.local_to_map(Player.global_position).x -\
+	 tile_map.local_to_map(global_position).x)
+	
+	if move_dir.x && how_far_x >= 2:
+		is_far = true
+		print("yaay")
+	elif move_dir.y && how_far_y >= 2:
+		is_far = true
+	else:
+		is_far = false
+	
+	print(is_far)
+	
+	if is_far:
+		move_dir *= 2
 
 
 func chase_player():

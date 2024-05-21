@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1cwk4mja0m6i"]
+[gd_scene load_steps=8 format=3 uid="uid://b1cwk4mja0m6i"]
 
 [ext_resource type="Texture2D" uid="uid://dn8muas8fpb0u" path="res://Levels/Test/TestTiles.png" id="1_uhomi"]
 [ext_resource type="PackedScene" uid="uid://c0amauo3u6fu2" path="res://Nobody/nobody.tscn" id="2_1unm0"]
 [ext_resource type="PackedScene" uid="uid://pmwki6okd2lh" path="res://Indicator/beat_indicator.tscn" id="3_0pl1y"]
 [ext_resource type="PackedScene" uid="uid://vg5eooa503ld" path="res://Enemies/SirMrEraser/sir_mr_eraser.tscn" id="4_b46kk"]
+[ext_resource type="PackedScene" uid="uid://dw6yvvbimsvhe" path="res://GameManager/game_manager.tscn" id="5_j6j4m"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tcvqi"]
 texture = ExtResource("1_uhomi")
@@ -46,3 +47,5 @@ position = Vector2(72, -8)
 
 [node name="SirMrEraser" parent="." instance=ExtResource("4_b46kk")]
 position = Vector2(-8, 24)
+
+[node name="GameManager" parent="." instance=ExtResource("5_j6j4m")]
