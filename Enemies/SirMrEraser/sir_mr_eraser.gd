@@ -1,23 +1,35 @@
 extends Sprite2D
 
 @onready var sprite: Sprite2D = $Sprite2D
-@onready var Player: Sprite2D = get_tree().get_nodes_in_group("Player")[0]
+@onready var Player: Sprite2D = get_tree().get_first_node_in_group("Player")
 @onready var timer = $"../BeatIndicator"
 @onready var moving = false
 @onready var tile_map: TileMap = $"../TileMap"
+@onready var game_manager: GameManager = $"../GameManager"
+
 var direction: Vector2i
 var move_dir: Vector2i
+var move_tiles: Array
 var is_far: bool = false
 
 
 func _ready():
-	timer.everyone_move.connect(chase_player)
+	timer.everyone_move.connect(func(): 
+		moving = true
+	)
 	find_move()
 
 
 func _physics_process(delta):
 	if global_position == sprite.global_position:
 		moving = false
+		for tile in move_tiles:
+			tile_map.set_cell(0, tile, 0, Vector2i(0, 40))
+		move_tiles.clear()
+		var current: Vector2i = tile_map.local_to_map(sprite.global_position)
+		if game_manager.player_area.has(current):
+			print("coolcool")
+		find_move()
 		return
 	
 	if moving:
@@ -29,31 +41,17 @@ func find_move():
 		Player.global_position.x - global_position.x,
 		Player.global_position.y - global_position.y
 	)
-
-	if direction.x != 0:
+	#print(direction)
+	if direction.x != 0 && abs(direction.x) >= abs(direction.y):
 		move_dir = Vector2i(direction.sign().x, 0)
-	elif direction.y != 0:
+	elif direction.y != 0 && abs(direction.y) >= abs(direction.x):
 		move_dir = Vector2i(0, direction.sign().y)
 	else:
 		move_dir = Vector2i.ZERO
 	
-	var how_far_y = abs(tile_map.local_to_map(Player.global_position).y -\
-	 tile_map.local_to_map(global_position).y)
-	var how_far_x = abs(tile_map.local_to_map(Player.global_position).x -\
-	 tile_map.local_to_map(global_position).x)
+	move_dir *= 2
 	
-	if move_dir.x && how_far_x >= 2:
-		is_far = true
-		print("yaay")
-	elif move_dir.y && how_far_y >= 2:
-		is_far = true
-	else:
-		is_far = false
-	
-	print(is_far)
-	
-	if is_far:
-		move_dir *= 2
+	chase_player()
 
 
 func chase_player():
@@ -69,5 +67,10 @@ func chase_player():
 	
 	global_position = tile_map.map_to_local(target_tile)
 	sprite.global_position = tile_map.map_to_local(current_tile)
-	moving = true
-	find_move()
+	
+	move_tiles.append(target_tile)
+	move_tiles.append(Vector2i(ceil((target_tile.x + current_tile.x) / 2),\
+	ceil((target_tile.y + current_tile.y) / 2)))
+	
+	for tile in move_tiles:
+		tile_map.set_cell(0, tile, 0, Vector2i(2, 40))

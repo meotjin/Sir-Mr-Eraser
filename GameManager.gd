@@ -7,12 +7,20 @@ var available_attacks := []:
 		return available_attacks
 
 @onready var tile_map: TileMap = $"../TileMap"
-@onready var player: Sprite2D = get_tree().get_nodes_in_group("Player")[0]
+@onready var player: Sprite2D = get_tree().get_first_node_in_group("Player")
+@onready var timer = $"../BeatIndicator"
 
 var player_area := []:
 	get:
 		return player_area
 
+func _ready():
+	timer.everyone_move.connect(func():
+		find_player_area()
+		find_attacks()
+		print(player_area)
+		print(available_attacks)
+	)
 
 func find_attacks():
 	available_attacks.clear()
@@ -40,12 +48,4 @@ func find_player_area():
 	var player_position: Vector2i = tile_map.local_to_map(player.global_position)
 	for x in range(-1, 2):
 		for y in range(-1, 2):
-			player_area.append([player_position, player_position + Vector2i(x,y)])
-
-
-func _input(event):
-	if Input.is_action_just_pressed("ui_accept"):
-		find_attacks()
-		find_player_area()
-		print(available_attacks)
-		print(player_area)
+			player_area.append(player_position + Vector2i(x,y))
