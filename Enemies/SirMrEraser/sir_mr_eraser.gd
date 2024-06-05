@@ -1,9 +1,14 @@
+#----------------------------------
+# Coded by Kurosh Hesamshariati
+#----------------------------------
+
+class_name SirMrEraser
+
 extends Sprite2D
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var Player: Sprite2D = get_tree().get_first_node_in_group("Player")
 @onready var timer = $"../BeatIndicator"
-@onready var moving = false
 @onready var tile_map: TileMap = $"../TileMap"
 @onready var game_manager: GameManager = $"../GameManager"
 
@@ -11,35 +16,63 @@ var direction: Vector2i
 var move_dir: Vector2i
 var move_tiles: Array
 var is_far: bool = false
+var attack_move := []
+var player_attack_pos: Vector2
+var reached_player_attack_pos = false
+
 enum state {
 	move,
+	idle,
 	attack
 }
 var mode
 
 func _ready():
 	timer.everyone_move.connect(func(): 
-		moving = true
+		mode = state.move
 	)
 	mode = state.move
 	find_move()
 
+var printed = false
 
 func _physics_process(delta):
+	if mode == state.attack:
+		if sprite.global_position == player_attack_pos:
+			reached_player_attack_pos = true
+	
+		if not reached_player_attack_pos:
+			global_position = global_position.move_toward(player_attack_pos,5)
+			print("1")
+		else:
+			global_position = global_position.move_toward(tile_map.map_to_local(attack_move[2]),1)
+			print("2")
+		if global_position == tile_map.map_to_local(attack_move[2]):
+			reached_player_attack_pos = false
+			mode = state.idle
+		return
+	
 	if global_position == sprite.global_position:
-		moving = false
+		mode = state.idle
+		
 		for tile in move_tiles:
 			tile_map.set_cell(0, tile, 0, Vector2i(0, 40))
 		move_tiles.clear()
+		
 		var current: Vector2i = tile_map.local_to_map(sprite.global_position)
+		
 		if game_manager.player_area.has(current):
-			queue_free()
-		else:
+			mode = state.attack
+			player_attack_pos = Player.global_position
+			game_manager.enemies_in_area.append(self)
+		
+		elif mode == state.idle:
 			find_move()
-		return
+			return
 	
-	if moving:
+	if mode == state.move:
 		sprite.global_position = sprite.global_position.move_toward(global_position, 2)
+
 
 
 func find_move():

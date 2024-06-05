@@ -1,3 +1,7 @@
+#----------------------------------
+# Coded by Kurosh Hesamshariati
+#----------------------------------
+
 class_name GameManager
 
 extends Node
@@ -10,6 +14,8 @@ var available_attacks := []:
 @onready var player: Sprite2D = get_tree().get_first_node_in_group("Player")
 @onready var timer = $"../BeatIndicator"
 
+var enemies_in_area := []
+
 var player_area := []:
 	get:
 		return player_area
@@ -18,29 +24,46 @@ func _ready():
 	timer.everyone_move.connect(func():
 		#find_player_area()
 		#find_attacks()
-		print(player_area)
-		print(available_attacks)
+		#print(player_area)
+		#print(available_attacks)
+		pass
 	)
+
+func _process(delta):
+	assign_attack()
+
+func assign_attack():
+	if not enemies_in_area.is_empty():
+		for enemy: SirMrEraser in enemies_in_area:
+			enemy.attack_move = available_attacks.pick_random()
+			available_attacks.erase(enemy.attack_move)
+			print(enemy.attack_move)
+		enemies_in_area.clear()
+
 
 func find_attacks():
 	available_attacks.clear()
 	var player_position: Vector2i = tile_map.local_to_map(player.global_position)
 	
-	var end_tile = Vector2i(player_position.x + 1, player_position.y)
+	var end_tile = Vector2i(player_position.x + 2, player_position.y)
+	var mid_tile = Vector2i(player_position.x + 1, player_position.y)
 	if tile_map.get_cell_tile_data(0, end_tile).get_custom_data("enemy_can") == true:
-		available_attacks.append([player_position, end_tile])
+		available_attacks.append([player_position,mid_tile, end_tile])
 	
-	end_tile = Vector2i(player_position.x - 1, player_position.y)
+	end_tile = Vector2i(player_position.x - 2, player_position.y)
+	mid_tile = Vector2i(player_position.x - 1, player_position.y)
 	if tile_map.get_cell_tile_data(0, end_tile).get_custom_data("enemy_can") == true:
-		available_attacks.append([player_position, end_tile])
+		available_attacks.append([player_position,mid_tile, end_tile])
 	
-	end_tile = Vector2i(player_position.x, player_position.y + 1)
+	end_tile = Vector2i(player_position.x, player_position.y + 2)
+	mid_tile = Vector2i(player_position.x, player_position.y + 1)
 	if tile_map.get_cell_tile_data(0, end_tile).get_custom_data("enemy_can") == true:
-		available_attacks.append([player_position, end_tile])
+		available_attacks.append([player_position,mid_tile, end_tile])
 	
-	end_tile = Vector2i(player_position.x, player_position.y - 1)
+	end_tile = Vector2i(player_position.x, player_position.y - 2)
+	mid_tile = Vector2i(player_position.x, player_position.y - 1)
 	if tile_map.get_cell_tile_data(0, end_tile).get_custom_data("enemy_can") == true:
-		available_attacks.append([player_position, end_tile])
+		available_attacks.append([player_position,mid_tile, end_tile])
 
 
 func find_player_area():
