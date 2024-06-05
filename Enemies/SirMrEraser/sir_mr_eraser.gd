@@ -11,12 +11,17 @@ var direction: Vector2i
 var move_dir: Vector2i
 var move_tiles: Array
 var is_far: bool = false
-
+enum state {
+	move,
+	attack
+}
+var mode
 
 func _ready():
 	timer.everyone_move.connect(func(): 
 		moving = true
 	)
+	mode = state.move
 	find_move()
 
 
@@ -28,8 +33,9 @@ func _physics_process(delta):
 		move_tiles.clear()
 		var current: Vector2i = tile_map.local_to_map(sprite.global_position)
 		if game_manager.player_area.has(current):
-			print("coolcool")
-		find_move()
+			queue_free()
+		else:
+			find_move()
 		return
 	
 	if moving:

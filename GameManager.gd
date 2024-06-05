@@ -16,8 +16,8 @@ var player_area := []:
 
 func _ready():
 	timer.everyone_move.connect(func():
-		find_player_area()
-		find_attacks()
+		#find_player_area()
+		#find_attacks()
 		print(player_area)
 		print(available_attacks)
 	)

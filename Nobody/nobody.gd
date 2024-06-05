@@ -8,6 +8,7 @@ extends Sprite2D
 @onready var tile_map: TileMap = $"../TileMap"
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var timer = $"../BeatIndicator"
+@onready var game_manager: GameManager = $"../GameManager"
 
 # will not let the character move towards destination unless command is given
 var move_command = false; 
@@ -22,6 +23,8 @@ func _physics_process(delta):
 	if global_position == sprite.global_position:
 		move_command = false
 		take_input = true
+		game_manager.find_attacks()
+		game_manager.find_player_area()
 		return
 	# moving
 	if move_command == true:
