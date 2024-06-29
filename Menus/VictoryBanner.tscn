@@ -1,0 +1,70 @@
+[gd_scene load_steps=11 format=3 uid="uid://du85xvfdtsmpa"]
+
+[ext_resource type="Texture2D" uid="uid://bn5grw5yde20k" path="res://Menus/UI_Assets/Titles/Victory.png" id="1_ccti5"]
+[ext_resource type="Script" path="res://Menus/VictoryBanner.gd" id="1_q46li"]
+[ext_resource type="Texture2D" uid="uid://bjswdivmjij8" path="res://Menus/UI_Assets/Backgrounds/TransparentBackground.png" id="2_6d54m"]
+[ext_resource type="Texture2D" uid="uid://73jnfotxrh33" path="res://Menus/UI_Assets/Buttons/NextLevelButton.png" id="2_vowb8"]
+[ext_resource type="Texture2D" uid="uid://b72wv82ew4g2d" path="res://Menus/UI_Assets/Buttons/QuitButton.png" id="3_rwpa0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vhvkt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k752u"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6x340"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nyjcn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2wb0w"]
+
+[node name="VictoryBanner" type="Node2D"]
+script = ExtResource("1_q46li")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6d54m")
+
+[node name="Title" type="TextureRect" parent="."]
+offset_left = 55.0
+offset_top = 37.0
+offset_right = 247.0
+offset_bottom = 101.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_ccti5")
+
+[node name="NextLevelButton" type="Button" parent="."]
+offset_left = 45.0
+offset_top = 64.0
+offset_right = 237.0
+offset_bottom = 128.0
+scale = Vector2(0.23, 0.23)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vhvkt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k752u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6x340")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nyjcn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2wb0w")
+icon = ExtResource("2_vowb8")
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 98.0
+offset_top = 64.0
+offset_right = 290.0
+offset_bottom = 128.0
+scale = Vector2(0.23, 0.23)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vhvkt")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_k752u")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_6x340")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nyjcn")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2wb0w")
+icon = ExtResource("3_rwpa0")
+
+[connection signal="mouse_entered" from="NextLevelButton" to="." method="_on_next_level_button_mouse_entered"]
+[connection signal="mouse_exited" from="NextLevelButton" to="." method="_on_next_level_button_mouse_exited"]
+[connection signal="pressed" from="NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="mouse_entered" from="QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="QuitButton" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

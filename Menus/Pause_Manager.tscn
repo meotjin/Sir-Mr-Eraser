@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://h2ju0kumlqo1"]
+
+[ext_resource type="Script" path="res://Menus/Pause_Manager.gd" id="1_5tlg5"]
+[ext_resource type="PackedScene" uid="uid://xc40r2hui2v" path="res://Menus/Pause_Menu.tscn" id="2_ga27o"]
+[ext_resource type="PackedScene" uid="uid://du85xvfdtsmpa" path="res://Menus/VictoryBanner.tscn" id="2_kb42j"]
+[ext_resource type="PackedScene" uid="uid://fuhemvpaxmdj" path="res://Menus/DefeatBanner.tscn" id="3_rhm3s"]
+
+[node name="PauseManager" type="Node2D"]
+script = ExtResource("1_5tlg5")
+
+[node name="VictoryBanner" parent="." instance=ExtResource("2_kb42j")]
+
+[node name="DefeatBanner" parent="." instance=ExtResource("3_rhm3s")]
+
+[node name="PauseMenu" parent="." instance=ExtResource("2_ga27o")]
+offset_top = 1.0
+offset_bottom = 1.0

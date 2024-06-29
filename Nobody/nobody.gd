@@ -18,6 +18,7 @@ var take_input = true
 func _ready():
 	timer.everyone_move.connect(command_move)
 
+
 func _physics_process(delta):
 	# will let new commands to be given once the previous is done
 	if global_position == sprite.global_position:

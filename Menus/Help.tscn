@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://talf5agyjj8f"]
+
+[ext_resource type="Texture2D" uid="uid://c26tp7faut401" path="res://Menus/UI_Assets/Backgrounds/BackgroundA.png" id="1_jspa3"]
+[ext_resource type="Script" path="res://Menus/Help.gd" id="1_w6tf7"]
+[ext_resource type="Texture2D" uid="uid://dc4bm7mymglq0" path="res://Menus/UI_Assets/Titles/Help.png" id="2_csohr"]
+[ext_resource type="Texture2D" uid="uid://ed0d2r3qacj4" path="res://Menus/UI_Assets/Buttons/BackButton.png" id="3_5pond"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g8ugj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lsmyh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mhu1h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tpt7d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_525d6"]
+
+[node name="Help" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_w6tf7")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 977.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.14, 0.25)
+texture = ExtResource("1_jspa3")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 6.0
+offset_right = 247.0
+offset_bottom = 70.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_csohr")
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 132.0
+offset_right = 191.0
+offset_bottom = 188.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_g8ugj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lsmyh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_mhu1h")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_tpt7d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_525d6")
+icon = ExtResource("3_5pond")
+
+[connection signal="mouse_entered" from="BackButton" to="." method="_on_back_button_mouse_entered"]
+[connection signal="mouse_exited" from="BackButton" to="." method="_on_back_button_mouse_exited"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]

@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://fuhemvpaxmdj"]
+
+[ext_resource type="Script" path="res://Menus/DefeatBanner.gd" id="1_5kban"]
+[ext_resource type="Texture2D" uid="uid://dbwyfmeahrkhx" path="res://Menus/UI_Assets/Titles/Defeat.png" id="1_bl3xn"]
+[ext_resource type="Texture2D" uid="uid://bhiuvpyxpm1s1" path="res://Menus/UI_Assets/Buttons/RetryButton.png" id="2_7qo7n"]
+[ext_resource type="Texture2D" uid="uid://bjswdivmjij8" path="res://Menus/UI_Assets/Backgrounds/TransparentBackground.png" id="2_jx2ar"]
+[ext_resource type="Texture2D" uid="uid://b72wv82ew4g2d" path="res://Menus/UI_Assets/Buttons/QuitButton.png" id="3_tw5gq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7hhek"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rcfdb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2d3kg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kbxnr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rw2ty"]
+
+[node name="DefeatBanner" type="Node2D"]
+script = ExtResource("1_5kban")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -945.0
+offset_top = -708.5
+offset_right = 945.0
+offset_bottom = 708.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_jx2ar")
+
+[node name="Title" type="TextureRect" parent="."]
+offset_left = 55.0
+offset_top = 37.0
+offset_right = 247.0
+offset_bottom = 101.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_bl3xn")
+
+[node name="RetryButton" type="Button" parent="."]
+offset_left = 45.0
+offset_top = 64.0
+offset_right = 237.0
+offset_bottom = 128.0
+scale = Vector2(0.23, 0.23)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7hhek")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rcfdb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2d3kg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kbxnr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rw2ty")
+icon = ExtResource("2_7qo7n")
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 98.0
+offset_top = 64.0
+offset_right = 290.0
+offset_bottom = 128.0
+scale = Vector2(0.23, 0.23)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7hhek")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rcfdb")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_2d3kg")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_kbxnr")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rw2ty")
+icon = ExtResource("3_tw5gq")
+
+[connection signal="mouse_entered" from="RetryButton" to="." method="_on_retry_button_mouse_entered"]
+[connection signal="mouse_exited" from="RetryButton" to="." method="_on_retry_button_mouse_exited"]
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="mouse_entered" from="QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="QuitButton" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

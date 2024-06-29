@@ -1,0 +1,98 @@
+[gd_scene load_steps=12 format=3 uid="uid://xc40r2hui2v"]
+
+[ext_resource type="Texture2D" uid="uid://beiyrdvuu17cv" path="res://Menus/UI_Assets/Titles/Paused.png" id="1_8vc4m"]
+[ext_resource type="Script" path="res://Menus/Pause_Menu.gd" id="1_vv07b"]
+[ext_resource type="Texture2D" uid="uid://dkbvoohyvwbav" path="res://Menus/UI_Assets/Buttons/Resume(Pause).png" id="2_worku"]
+[ext_resource type="Texture2D" uid="uid://bjswdivmjij8" path="res://Menus/UI_Assets/Backgrounds/TransparentBackground.png" id="2_ye34q"]
+[ext_resource type="Texture2D" uid="uid://h22ecfogjlnq" path="res://Menus/UI_Assets/Buttons/Retry(Pause).png" id="3_mrhgk"]
+[ext_resource type="Texture2D" uid="uid://dsfgnwx8e5vnl" path="res://Menus/UI_Assets/Buttons/Exit(Pause).png" id="4_ynbg4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pjkui"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vd64i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bptre"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cely2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wf7go"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vv07b")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ye34q")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 18.0
+offset_right = 247.0
+offset_bottom = 210.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_8vc4m")
+
+[node name="ResumeButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 64.0
+offset_right = 237.0
+offset_bottom = 128.0
+scale = Vector2(0.23, 0.23)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pjkui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vd64i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bptre")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cely2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wf7go")
+icon = ExtResource("2_worku")
+
+[node name="RetryButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 72.0
+offset_top = 64.0
+offset_right = 264.0
+offset_bottom = 128.0
+scale = Vector2(0.23, 0.23)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pjkui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vd64i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bptre")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cely2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wf7go")
+icon = ExtResource("3_mrhgk")
+
+[node name="QuitButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 64.0
+offset_right = 290.0
+offset_bottom = 128.0
+scale = Vector2(0.23, 0.23)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_pjkui")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_vd64i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bptre")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cely2")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wf7go")
+icon = ExtResource("4_ynbg4")
+
+[connection signal="mouse_entered" from="ResumeButton" to="." method="_on_resume_button_mouse_entered"]
+[connection signal="mouse_exited" from="ResumeButton" to="." method="_on_resume_button_mouse_exited"]
+[connection signal="pressed" from="ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="mouse_entered" from="RetryButton" to="." method="_on_retry_button_mouse_entered"]
+[connection signal="mouse_exited" from="RetryButton" to="." method="_on_retry_button_mouse_exited"]
+[connection signal="pressed" from="RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="mouse_entered" from="QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="QuitButton" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]

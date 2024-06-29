@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0amauo3u6fu2"]
+[gd_scene load_steps=6 format=3 uid="uid://c0amauo3u6fu2"]
 
 [ext_resource type="Texture2D" uid="uid://b67vcbiywi2rp" path="res://icon.svg" id="1_b2q15"]
 [ext_resource type="Script" path="res://Nobody/nobody.gd" id="1_s0iqe"]
 [ext_resource type="Texture2D" uid="uid://dxx45ylfeb2gd" path="res://Nobody/tilemap_packed.png" id="1_wnlly"]
+[ext_resource type="PackedScene" uid="uid://h2ju0kumlqo1" path="res://Menus/Pause_Manager.tscn" id="4_j8alf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n80va"]
 atlas = ExtResource("1_wnlly")
@@ -17,3 +18,7 @@ scale = Vector2(0.125, 0.125)
 texture = ExtResource("1_b2q15")
 
 [node name="Camera2D" type="Camera2D" parent="Sprite2D"]
+
+[node name="PauseManager" parent="Sprite2D/Camera2D" instance=ExtResource("4_j8alf")]
+position = Vector2(-600, -424)
+scale = Vector2(7.5, 7.5)

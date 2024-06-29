@@ -1,0 +1,148 @@
+[gd_scene load_steps=28 format=3 uid="uid://bcbmdoumicb12"]
+
+[ext_resource type="Script" path="res://Menus/Main_Menu.gd" id="1_ms1y5"]
+[ext_resource type="Texture2D" uid="uid://c26tp7faut401" path="res://Menus/UI_Assets/Backgrounds/BackgroundA.png" id="2_ic4eb"]
+[ext_resource type="Texture2D" uid="uid://bp83b6mp6r5dq" path="res://Menus/UI_Assets/Buttons/NewGameButton.png" id="3_5rqbi"]
+[ext_resource type="Texture2D" uid="uid://c0uqgqhro6jwq" path="res://Menus/UI_Assets/Titles/SirMrEraser.png" id="3_dcuro"]
+[ext_resource type="Texture2D" uid="uid://dqei22316ktx2" path="res://Menus/UI_Assets/Buttons/SettingsButton.png" id="4_ttsel"]
+[ext_resource type="Texture2D" uid="uid://cxbet3pkb3x66" path="res://Menus/UI_Assets/Buttons/HelpButton.png" id="5_wc70y"]
+[ext_resource type="Texture2D" uid="uid://bligwv1oyqv3e" path="res://Menus/UI_Assets/Buttons/ExitButton.png" id="6_do6uj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yae7q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ravf2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_kl1ib"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_102p1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4rq38"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_02u4d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l84we"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qie0a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7r54r"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_03vgq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l625h"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_60s1i"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5ijec"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_78yp4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vh3hw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nofgo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ooq5q"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iskeb"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bognp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_sto23"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ms1y5")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 977.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.14, 0.25)
+texture = ExtResource("2_ic4eb")
+
+[node name="Title" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 55.0
+offset_top = 6.0
+offset_right = 247.0
+offset_bottom = 70.0
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_dcuro")
+
+[node name="NewGameButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 67.0
+offset_right = 199.0
+offset_bottom = 131.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yae7q")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ravf2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_kl1ib")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_102p1")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4rq38")
+icon = ExtResource("3_5rqbi")
+
+[node name="SettingsButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 87.0
+offset_right = 199.0
+offset_bottom = 151.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_02u4d")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_l84we")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_qie0a")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7r54r")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_03vgq")
+icon = ExtResource("4_ttsel")
+
+[node name="HelpButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 107.0
+offset_right = 199.0
+offset_bottom = 171.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l625h")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_60s1i")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_5ijec")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_78yp4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_vh3hw")
+icon = ExtResource("5_wc70y")
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 2
+offset_left = 13.0
+offset_top = 132.0
+offset_right = 191.0
+offset_bottom = 188.0
+scale = Vector2(0.2, 0.2)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_nofgo")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ooq5q")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_iskeb")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_bognp")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_sto23")
+icon = ExtResource("6_do6uj")
+
+[connection signal="mouse_entered" from="NewGameButton" to="." method="_on_new_game_button_mouse_entered"]
+[connection signal="mouse_exited" from="NewGameButton" to="." method="_on_new_game_button_mouse_exited"]
+[connection signal="pressed" from="NewGameButton" to="." method="_on_new_game_pressed"]
+[connection signal="mouse_entered" from="SettingsButton" to="." method="_on_settings_button_mouse_entered"]
+[connection signal="mouse_exited" from="SettingsButton" to="." method="_on_settings_button_mouse_exited"]
+[connection signal="pressed" from="SettingsButton" to="." method="_on_settings_pressed"]
+[connection signal="mouse_entered" from="HelpButton" to="." method="_on_help_button_mouse_entered"]
+[connection signal="mouse_exited" from="HelpButton" to="." method="_on_help_button_mouse_exited"]
+[connection signal="pressed" from="HelpButton" to="." method="_on_help_pressed"]
+[connection signal="mouse_entered" from="ExitButton" to="." method="_on_exit_button_mouse_entered"]
+[connection signal="mouse_exited" from="ExitButton" to="." method="_on_exit_button_mouse_exited"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_pressed"]
