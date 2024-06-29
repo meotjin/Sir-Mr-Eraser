@@ -20,7 +20,7 @@ func _ready():
 
 #New Game Button Actions on default,mouse click and hover states.
 func _on_new_game_pressed():
-	get_tree().change_scene_to_file("res://Levels/Level1/level_1.tscn")
+	get_tree().change_scene_to_file("res://Menus/LevelList.tscn")
 func _on_new_game_button_mouse_entered():
 	$NewGameButton.icon = newgame_hover_icon
 	Input.set_custom_mouse_cursor(hover_cursor)
