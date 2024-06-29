@@ -1,17 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://pmwki6okd2lh"]
 
-[ext_resource type="Script" path="res://Indicator/beat_indicator.gd" id="1_sav2c"]
-[ext_resource type="Texture2D" uid="uid://doxnviajvsmw4" path="res://Indicator/back.png" id="2_wxs4a"]
-[ext_resource type="Texture2D" uid="uid://crxlyh3at6v5x" path="res://Indicator/Outer.png" id="3_tv56n"]
-[ext_resource type="Texture2D" uid="uid://c46o233gmhd6v" path="res://Indicator/progress.png" id="4_tv8nf"]
-[ext_resource type="Texture2D" uid="uid://bfpo74l3edvhw" path="res://Indicator/backF.png" id="5_xgvqp"]
-[ext_resource type="Texture2D" uid="uid://cjp2uqgoycy0h" path="res://Indicator/OuterF.png" id="6_qc2yq"]
-[ext_resource type="Texture2D" uid="uid://b6dv5lb4t2dse" path="res://Indicator/progressF.png" id="7_3y2q6"]
+[ext_resource type="Script" path="res://BeatIndicatorUI/Beat_Indicator-UI.gd" id="1_iuwfb"]
+[ext_resource type="Texture2D" uid="uid://doxnviajvsmw4" path="res://BeatIndicatorUI/back.png" id="2_wxs4a"]
+[ext_resource type="Texture2D" uid="uid://crxlyh3at6v5x" path="res://BeatIndicatorUI/Outer.png" id="3_tv56n"]
+[ext_resource type="Texture2D" uid="uid://c46o233gmhd6v" path="res://BeatIndicatorUI/progress.png" id="4_tv8nf"]
+[ext_resource type="Texture2D" uid="uid://bfpo74l3edvhw" path="res://BeatIndicatorUI/backF.png" id="5_xgvqp"]
+[ext_resource type="Texture2D" uid="uid://cjp2uqgoycy0h" path="res://BeatIndicatorUI/OuterF.png" id="6_qc2yq"]
+[ext_resource type="Texture2D" uid="uid://b6dv5lb4t2dse" path="res://BeatIndicatorUI/progressF.png" id="7_3y2q6"]
 
 [node name="BeatIndicator" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("1_sav2c")
+script = ExtResource("1_iuwfb")
 metadata/_edit_vertical_guides_ = [80.0]
 
 [node name="LeftProgressBar" type="TextureProgressBar" parent="."]
